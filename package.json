@@ -1,17 +1,22 @@
 {
-  "name": "playwrightframework",
+  "name": "my-tests-pw",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "secondTest": "npx playwright test tests/mySecondTest.spec.ts",
     "google": "npx playwright test tests/google"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.48.1",
-    "@types/node": "^22.8.4",
-    "playwright": "^1.48.1"
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
+    "allure-playwright": "^3.2.0",
+    "dotenv": "^16.4.7"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.5.0"
   }
 }

@@ -1,0 +1,207 @@
+{
+  "config": {
+    "configFile": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/playwright.config.ts",
+    "rootDir": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 60000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "/Users/hmdraza9/Documents/GitClones/my-tests-pw/node_modules/allure-playwright/dist/cjs/index.js",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/report.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/report.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 40000
+      },
+      {
+        "outputDir": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "testMobile.spec.ts"
+        ],
+        "timeout": 40000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.50.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "testMobile.spec.ts",
+      "file": "testMobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Google page",
+          "file": "testMobile.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Retry test",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 40000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "failed",
+                      "duration": 23822,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Google\u001b[7ma\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Google\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Google\u001b[7ma\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Google\"\u001b[39m\n    at /Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts:31:23",
+                        "matcherResult": {
+                          "actual": "Google",
+                          "expected": "Googlea",
+                          "message": "\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Google\u001b[7ma\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Google\"\u001b[39m",
+                          "name": "toBe",
+                          "pass": false
+                        },
+                        "location": {
+                          "file": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts",
+                          "column": 23,
+                          "line": 31
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 29 |\u001b[39m         title \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtitle()\u001b[33m;\u001b[39m  \u001b[90m// Ensure 'await' is used correctly\u001b[39m\n \u001b[90m 30 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m\"Title: \"\u001b[39m \u001b[33m+\u001b[39m title)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m         expect(title)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"Googlea\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[90m// expect(title).toBe(\"TestABCCD\");//make it fail\u001b[39m\n \u001b[90m 33 |\u001b[39m     })\n \u001b[90m 34 |\u001b[39m })\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts",
+                            "column": 23,
+                            "line": 31
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Google\u001b[7ma\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Google\"\u001b[39m\n\n\u001b[0m \u001b[90m 29 |\u001b[39m         title \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtitle()\u001b[33m;\u001b[39m  \u001b[90m// Ensure 'await' is used correctly\u001b[39m\n \u001b[90m 30 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m\"Title: \"\u001b[39m \u001b[33m+\u001b[39m title)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m         expect(title)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"Googlea\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[90m// expect(title).toBe(\"TestABCCD\");//make it fail\u001b[39m\n \u001b[90m 33 |\u001b[39m     })\n \u001b[90m 34 |\u001b[39m })\u001b[0m\n\u001b[2m    at /Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts:31:23\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "\u001b[36m[AsyncFunction: title]\u001b[39m\n"
+                        },
+                        {
+                          "text": "Before each of Google page\n"
+                        },
+                        {
+                          "text": "globalUrlQA: https://www.globalsqa.com/demo-site/draganddrop/\n"
+                        },
+                        {
+                          "text": "Base URL: https://www.google.com\n"
+                        },
+                        {
+                          "text": "Base URL: http://www.google.co.in.dotenv\n"
+                        },
+                        {
+                          "text": "process.env.orgName: Publicis Sapient\n"
+                        },
+                        {
+                          "text": "Catharine\n"
+                        },
+                        {
+                          "text": "Running on a desktop device\n"
+                        },
+                        {
+                          "text": "Title: Google\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-03-06T17:27:30.586Z",
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/test-results/testMobile-Google-page-Retry-test-chromium/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/test-results/testMobile-Google-page-Retry-test-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts",
+                        "column": 23,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "bc004e7dcdc8a65b7092-84778d4ff7e7b0b447c2",
+              "file": "testMobile.spec.ts",
+              "line": 23,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-03-06T17:27:29.999Z",
+    "duration": 25102.713,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,20 +1,115 @@
-import { PlaywrightTestConfig, defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
+import type { TestOptions } from './test-options';
 
-const config: PlaywrightTestConfig = defineConfig({
-  use: {
-    baseURL: process.env.BASE_URL || 'http://google.com',       // Set the base URL for tests 'http://google.com/' or use process.env.BASE_URL, execute this to use 'process' - 'npm install --save-dev @types/node'
-    //execute using this - 'BASE_URL=https:www.google.com npx playwright test google --headed'
-    browserName: 'chromium',             // Use Chromium as the browser
-    headless: true,                     // Run tests in headed mode
-    video: 'on',           // Record videos only on test failures
-    screenshot: 'on',
-    viewport: null, // This will open the browser in fullscreen mode 
+/**
+ * Read environment variables from file.
+ * https://github.com/motdotla/dotenv
+ */
+// import dotenv from 'dotenv';
+// import path from 'path';
+// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+require('dotenv').config();
+
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
+export default defineConfig<TestOptions>({
+  timeout: 40000,
+  globalTimeout: 60000,
+
+  expect:{
+    timeout: 2000
   },
+  
+  testDir: './tests',
+  /* Run tests in files in parallel */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['junit', { outputFile: 'results.xml' }], // JUnit report for CI/CD integration
-    ['html', { open: 'never' }]               // HTML report with video support
-  ],
-  outputDir: 'test-results'               // Set the directory for all test artifacts
-});
+      ['allure-playwright'],
+      // ['list'],
+      ['json', {outputFile: "test-results/report.json"}],
+      ['junit', {outputFile: "test-results/report.xml"}]
+    ],
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  use: {
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    baseURL: 'https://www.google.com',
+    globalUrlQA:'https://www.globalsqa.com/demo-site/draganddrop/',
 
-export default config;
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    // trace: 'on-first-retry', //if first retry fails
+    trace: 'on', //always on
+    actionTimeout : 20000,
+    navigationTimeout : 25000,
+    video: 'on',
+    viewport : null
+  },
+
+  /* Configure projects for major browsers */
+  projects: [
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'],
+    //     baseURL: 'https://www.google1.com'
+    //    },
+    // },
+
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],
+    //     baseURL: 'https://www.google2.com' },
+    // },
+
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Safari'] },
+    },
+
+    // {
+    //   name: 'mobile',
+    //   testMatch: 'testMobile.spec.ts',
+    //   use: { ...devices['Moto G4'] },
+    // },
+
+    {
+      name: 'mobile',
+      testMatch: 'testMobile.spec.ts',
+      use: { ...devices['iPhone 12 Mini'] },
+    },
+
+  //   /* Test against mobile viewports. */
+  //   // {
+  //   //   name: 'Mobile Chrome',
+  //   //   use: { ...devices['Pixel 5'] },
+  //   // },
+  //   // {
+  //   //   name: 'Mobile Safari',
+  //   //   use: { ...devices['iPhone 12'] },
+  //   // },
+
+  //   /* Test against branded browsers. */
+  //   // {
+  //   //   name: 'Microsoft Edge',
+  //   //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+  //   // },
+  //   // {
+  //   //   name: 'Google Chrome',
+  //   //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+  //   // },
+  ],
+
+  /* Run your local dev server before starting the tests */
+  // webServer: {
+  //   command: 'npm run start',
+  //   url: 'http://127.0.0.1:3000',
+  //   reuseExistingServer: !process.env.CI,
+  // },
+});

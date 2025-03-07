@@ -1,0 +1,52 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="25.102713">
+<testsuite name="testMobile.spec.ts" timestamp="2025-03-06T17:27:30.160Z" hostname="chromium" tests="1" failures="1" skipped="0" time="23.822" errors="0">
+<testcase name="Google page › Retry test" classname="testMobile.spec.ts" time="23.822">
+<failure message="testMobile.spec.ts:23:9 Retry test" type="FAILURE">
+<![CDATA[  [chromium] › testMobile.spec.ts:23:9 › Google page › Retry test ──────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Googlea"
+    Received: "Google"
+
+      29 |         title = await page.title();  // Ensure 'await' is used correctly
+      30 |         console.log("Title: " + title);
+    > 31 |         expect(title).toBe("Googlea");
+         |                       ^
+      32 |         // expect(title).toBe("TestABCCD");//make it fail
+      33 |     })
+      34 | })
+        at /Users/hmdraza9/Documents/GitClones/my-tests-pw/tests/testMobile.spec.ts:31:23
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/testMobile-Google-page-Retry-test-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/testMobile-Google-page-Retry-test-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/testMobile-Google-page-Retry-test-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[[36m[AsyncFunction: title][39m
+Before each of Google page
+globalUrlQA: https://www.globalsqa.com/demo-site/draganddrop/
+Base URL: https://www.google.com
+Base URL: http://www.google.co.in.dotenv
+process.env.orgName: Publicis Sapient
+Catharine
+Running on a desktop device
+Title: Google
+
+[[ATTACHMENT|testMobile-Google-page-Retry-test-chromium/video.webm]]
+
+[[ATTACHMENT|testMobile-Google-page-Retry-test-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
